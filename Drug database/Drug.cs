@@ -9,12 +9,12 @@ namespace Drug_database
     internal class Drug
     {
         public uint ID = 0;
-        public string Name = null;
-        public string Description = null;
-        public string Producer = null;
+        public string Name = string.Empty;
+        public string Description = string.Empty;
+        public string Producer = string.Empty;
         private int InStock = 0;
         private double Price = 0;
-        private string PhotoPath = null;
+        private string PhotoPath = string.Empty;
 
         public Drug(uint ID, string name, string desctription, string producer, int inStock, double price, string photoPath)
         {
@@ -25,12 +25,6 @@ namespace Drug_database
             this.InStock = inStock;
             this.Price = price;
             this.PhotoPath = photoPath;
-        }
-
-        public Drug(uint ID, string name)
-        {
-            this.ID = ID;
-            this.Name = name;
         }
     }
 }
