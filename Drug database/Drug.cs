@@ -8,7 +8,7 @@ namespace Drug_database
 {
     internal class Drug
     {
-        public long ID = 0;
+        public int ID = 0;
         public string Name = null;
         public string Description = null;
         public string Producer = null;
@@ -16,7 +16,7 @@ namespace Drug_database
         private double Price = 0;
         private string PhotoPath = null;
 
-        public Drug(long ID, string name, string desctription, string producer, int inStock, double price, string photoPath)
+        public Drug(int ID, string name, string desctription, string producer, int inStock, double price, string photoPath)
         {
             this.ID = ID;
             this.Name = name;
