@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace Drug_database
         }
         public bool AddNewDrug(Drug drug)
         {
+            foreach(string name in GetDrugNames()){
+                if (name==drug.Name)return false;
+            }
             drugs.Add(drug);
             return true;
         }
@@ -102,7 +106,7 @@ namespace Drug_database
             {
                 drugs.Add(new Drug(Convert.ToUInt32(CSVfile.Rows[i].Field<string>("ID")), CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), Convert.ToDouble(CSVfile.Rows[i].Field<string>("Price")), CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
-            return false;
+            return true;
         }
 
     }
