@@ -20,15 +20,14 @@ namespace Drug_database
         private void Form1_Load(object sender, EventArgs e)
         {
             DrgName.Text = string.Empty;
-            database.ImportFromCSV(@"../drugs.csv");
             /* var drugs = new List<Drug>();
 
              drugs.Add(new Drug(0, "Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, ""));
              drugs.Add(new Drug(1, "Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, ""));*/
              //database.AddNewDrug(new Drug(5, "Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
 
-            //database.AddNewDrug(new Drug(6, "Paralen Rapid 500mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, ""));
-            //database.AddNewDrug(new Drug(7, "Paralen Rapid 300mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, ""));
+            database.AddNewDrug(new Drug(6, "Paralen Rapid 500mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, "image"));
+            database.AddNewDrug(new Drug(7, "Paralen Rapid 300mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, "image"));
 
 
             var MyCollection = new AutoCompleteStringCollection();
@@ -64,7 +63,30 @@ namespace Drug_database
 
         private void button2_Click(object sender, EventArgs e)
         {
-            database.ExportToCSV(@"../drugs.csv");
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "csv files (*.csv)|*.csv";
+            fileDialog.RestoreDirectory = true;
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                database.ExportToCSV(fileDialog.FileName);
+            }
+            //database.ExportToCSV(@"../drugs.csv");
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "csv files (*.csv)|*.csv";
+            fileDialog.FilterIndex = 1;
+            fileDialog.Multiselect = false;
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                database.ImportFromCSV(fileDialog.FileName);
+            }
         }
     }
 }
