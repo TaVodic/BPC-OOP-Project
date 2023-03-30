@@ -26,18 +26,20 @@ namespace Drug_database
              drugs.Add(new Drug(1, "Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, ""));*/
              //database.AddNewDrug(new Drug(5, "Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
 
-            database.AddNewDrug(new Drug(6, "Paralen Rapid 500mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, "image"));
-            database.AddNewDrug(new Drug(7, "Paralen Rapid 300mg", "\"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. \"", "Zentiva", 5, 2.50, "image"));
+            //database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
+            //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
 
-
+        }
+        private void AutoCompleteInit()
+        {
             var MyCollection = new AutoCompleteStringCollection();
-            foreach(string name in database.GetDrugNames())
+            foreach (string name in database.GetDrugNames())
             {
                 MyCollection.Add(name);
-            }           
+            }
             DrgSearch.AutoCompleteCustomSource = MyCollection;
-        }
 
+        }
   
 
         private void DrgSearch_TextChanged(object sender, EventArgs e)
@@ -85,8 +87,16 @@ namespace Drug_database
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                database.ImportFromCSV(fileDialog.FileName);
+
+              if (!database.ImportFromCSV(fileDialog.FileName)) Excep.Text = "Not compatible or corrupted file! Import Failed.";
+              else Excep.Text = "";
             }
+            AutoCompleteInit();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

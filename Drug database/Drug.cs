@@ -9,15 +9,24 @@ namespace Drug_database
 {
     internal class Drug
     {
-        public uint ID { get; }
+        public uint ID { get; set; }
         public string Name { get; }
         public string Description { get; }
         public string Producer { get; }
-        public int InStock  { get; }
+        public int InStock  { get; set; }
         public double Price  { get; }
         public string PhotoPath { get; }
 
-public Drug(uint ID, string name, string desctription, string producer, int inStock, double price, string photoPath)
+        public Drug(string name, string desctription, string producer, int inStock, double price, string photoPath)
+        {
+            this.Name = name;
+            this.Description = desctription;
+            this.Producer = producer;
+            this.InStock = inStock;
+            this.Price = price;
+            this.PhotoPath = photoPath;
+        }
+        public Drug(uint ID, string name, string desctription, string producer, int inStock, double price, string photoPath)
         {
             this.ID = ID;
             this.Name = name;
@@ -27,14 +36,16 @@ public Drug(uint ID, string name, string desctription, string producer, int inSt
             this.Price = price;
             this.PhotoPath = photoPath;
         }
-        public Drug(uint ID, string name, string desctription)
+        public void setID(uint ID)
         {
             this.ID = ID;
-            this.Name = name;
-            this.Description = desctription;
         }
-        public void sell(int amout)
+
+        public bool sell(int amout)
         {
+            if((InStock - amout) >= 0)InStock = InStock - amout;
+            else return false;
+            return true;
 
         }
 

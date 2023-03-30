@@ -14,16 +14,35 @@ namespace Drug_database
 {
     internal class Database
     {
+        private uint lastID = 0;
         private List<Drug> drugs = new List<Drug>();
         public Database() {
+            
         }
         public bool AddNewDrug(Drug drug)
         {
             foreach(string name in GetDrugNames()){
                 if (name==drug.Name)return false;
             }
+            drug.setID(lastID);
+            if (drugs.Any()) lastID = drugs.Last().ID + 1;
+            else lastID++;
             drugs.Add(drug);
             return true;
+        }
+
+        public bool RemoveDrug(uint ID)
+        {
+            foreach (Drug drug in drugs)
+            {
+                if (drug.ID == ID)
+                {
+                    drugs.Remove(drug);
+                    lastID = ID;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<string> GetDrugNames()
@@ -35,6 +54,7 @@ namespace Drug_database
             }
             return names;
         }
+        
         public string GetDrugDescriptipn(uint ID)
         {
             foreach (Drug drug in drugs)
@@ -90,7 +110,9 @@ namespace Drug_database
                 string description = row;
                 int from = description.IndexOf("\"") + 1;
                 int to = description.LastIndexOf("\"");
-                description = description.Substring(from, to - from);
+                try
+                {
+                    description = description.Substring(from, to - from);
                 row = row.Replace(description, "#");
                 string[] rows = row.Split(',');
                 DataRow dr = CSVfile.NewRow();
@@ -100,6 +122,11 @@ namespace Drug_database
                     else dr[i] = rows[i];
                 }
                 CSVfile.Rows.Add(dr);
+                }
+                catch
+                {
+                    return false;
+                }
             }
             object okno = CSVfile.Rows[0][0];
             for (int i = 0; i < CSVfile.Rows.Count; i++)
