@@ -19,14 +19,14 @@ namespace Drug_database
         public Database() {
             
         }
-        public bool AddNewDrug(Drug drug)
+        public bool AddNewDrug(Drug drug) // always create new ID
         {
-            foreach(string name in GetDrugNames()){
-                if (name==drug.Name)return false;
-            }
+            foreach(string name in GetDrugNames()) // check if the drug is already in database         
+                if (name == drug.Name) return false;
+            
+            if (drugs.Any())            
+                lastID = drugs.Last().ID + 1;            
             drug.setID(lastID);
-            if (drugs.Any()) lastID = drugs.Last().ID + 1;
-            else lastID++;
             drugs.Add(drug);
             return true;
         }
@@ -113,15 +113,15 @@ namespace Drug_database
                 try
                 {
                     description = description.Substring(from, to - from);
-                row = row.Replace(description, "#");
-                string[] rows = row.Split(',');
-                DataRow dr = CSVfile.NewRow();
-                for (int i = 0; i < headers.Length; i++)
-                {
-                    if (rows[i].IndexOf("#") != -1) dr[i] = description;
-                    else dr[i] = rows[i];
-                }
-                CSVfile.Rows.Add(dr);
+                    row = row.Replace(description, "#");
+                    string[] rows = row.Split(',');
+                    DataRow dr = CSVfile.NewRow();
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        if (rows[i].IndexOf("#") != -1) dr[i] = description;
+                        else dr[i] = rows[i];
+                    }
+                    CSVfile.Rows.Add(dr);
                 }
                 catch
                 {
@@ -131,7 +131,7 @@ namespace Drug_database
             object okno = CSVfile.Rows[0][0];
             for (int i = 0; i < CSVfile.Rows.Count; i++)
             {
-                drugs.Add(new Drug(Convert.ToUInt32(CSVfile.Rows[i].Field<string>("ID")), CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), Convert.ToDouble(CSVfile.Rows[i].Field<string>("Price")), CSVfile.Rows[i].Field<string>("PhotoPath")));
+                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), Convert.ToDouble(CSVfile.Rows[i].Field<string>("Price")), CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
             return true;
         }

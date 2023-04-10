@@ -18,7 +18,7 @@ namespace Drug_database
         public string PhotoPath { get; }
 
         public Drug(string name, string desctription, string producer, int inStock, double price, string photoPath)
-        {
+        {            
             this.Name = name;
             this.Description = desctription;
             this.Producer = producer;
