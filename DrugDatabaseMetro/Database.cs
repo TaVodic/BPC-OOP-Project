@@ -22,11 +22,11 @@ namespace Drug_database
         public bool AddNewDrug(Drug drug)
         {
             foreach(string name in GetDrugNames()){
-                if (name==drug.Name)return false;
-            }
+                if (name == drug.Name) return false;
+            }            
+            if (drugs.Any()) 
+                lastID = drugs.Last().ID++;
             drug.setID(lastID);
-            if (drugs.Any()) lastID = drugs.Last().ID + 1;
-            else lastID++;
             drugs.Add(drug);
             return true;
         }
@@ -76,6 +76,14 @@ namespace Drug_database
                 return searchedDrug;
             }
             return null;
+        }
+
+        public List <Drug> GetDrugList()
+        {
+            var list = new List<Drug>();
+            foreach (Drug drug in drugs)
+                list.Add(drug);
+            return list;
         }
 
         public bool ExportToCSV(string FilePath)

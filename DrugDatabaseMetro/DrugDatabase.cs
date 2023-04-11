@@ -24,10 +24,11 @@ namespace DrugDatabaseMetro
         private void DrugDatabase_Load(object sender, EventArgs e)
         {
             DrgName.Text = string.Empty;
-            database.AddNewDrug(new Drug("Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
-            database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
-            database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
-            AutoCompleteInit();
+            //database.AddNewDrug(new Drug("Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
+            //database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
+            //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
+            //AutoCompleteInit();
+            ListDrugs();
         }
 
         private void AutoCompleteInit()
@@ -90,6 +91,34 @@ namespace DrugDatabaseMetro
                 }
             }
             AutoCompleteInit();
+            ListDrugs();
+        }
+
+        private void ListDrugs()
+        {
+            if (Menu.SelectedIndex == 1)
+            {
+                DrugList.Items.Clear();
+                var list = database.GetDrugList();
+                int ID = 0;
+                foreach (var drug in list)
+                {                    
+                    ListViewItem item = new ListViewItem(ID.ToString());
+                    item.SubItems.Add(drug.Name);
+                    item.SubItems.Add(drug.Producer);
+                    item.SubItems.Add(drug.InStock.ToString());
+                    item.SubItems.Add(drug.Price.ToString("0.00") + " €");
+                    item.SubItems.Add(drug.Description);
+                    DrugList.Items.Add(item);
+                    ID++;
+                }
+            }
+        }
+
+        private void Menu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Error.Text = string.Empty;
+            ListDrugs();
         }
     }
 }
