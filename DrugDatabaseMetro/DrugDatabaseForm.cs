@@ -12,23 +12,26 @@ using System.Windows.Forms;
 
 namespace DrugDatabaseMetro
 {
-    public partial class DrugDatabase : MetroSetForm
+    public partial class DrugDatabaseForm : MetroSetForm
     {
-        public DrugDatabase()
+        public DrugDatabaseForm()
         {
             InitializeComponent();
         }
 
-        Database database = new Database();
+        public static DrugDatabaseForm instance;
+
+        public Database database = new Database();
 
         private void DrugDatabase_Load(object sender, EventArgs e)
         {
+            instance = this;
             DrgName.Text = string.Empty;
             //database.AddNewDrug(new Drug("Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
             //database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
             //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
             //AutoCompleteInit();
-            ListDrugs();
+            ListDrugs();            
         }
 
         private void AutoCompleteInit()
@@ -118,7 +121,42 @@ namespace DrugDatabaseMetro
         private void Menu_SelectedIndexChanged(object sender, EventArgs e)
         {
             Error.Text = string.Empty;
+            AutoCompleteInit();
             ListDrugs();
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Add);
+            form2.ShowDialog();
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            int index;
+            try
+            {
+                index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Select item for editing!", "Error");
+                return;
+            }
+            
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, index);
+            form2.ShowDialog();
+        }
+
+        private void DrugDatabaseForm_Activated(object sender, EventArgs e)
+        {
+            AutoCompleteInit();
+            ListDrugs();
+        }
+
+        private void DrugList_DoubleClick(object sender, EventArgs e)
+        {
+            EditBtn_Click(sender, e);
         }
     }
 }

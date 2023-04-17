@@ -52,16 +52,25 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="Drug.cs" />
-    <Compile Include="DrugDatabase.cs">
+    <Compile Include="DrugDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrugDatabase.Designer.cs">
-      <DependentUpon>DrugDatabase.cs</DependentUpon>
+    <Compile Include="DrugDatabaseForm.Designer.cs">
+      <DependentUpon>DrugDatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditingForm.Designer.cs">
+      <DependentUpon>EditingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DrugDatabase.resx">
-      <DependentUpon>DrugDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="DrugDatabaseForm.resx">
+      <DependentUpon>DrugDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditingForm.resx">
+      <DependentUpon>EditingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

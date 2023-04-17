@@ -12,26 +12,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Drug_database
 {
-    internal class Database
+    public class Database
     {
-        private uint lastID = 0;
         private List<Drug> drugs = new List<Drug>();
         public Database() {
-            
+
         }
         public bool AddNewDrug(Drug drug)
         {
-            foreach(string name in GetDrugNames()){
+            foreach (string name in GetDrugNames())
                 if (name == drug.Name) return false;
-            }            
-            if (drugs.Any()) 
-                lastID = drugs.Last().ID++;
-            drug.setID(lastID);
+
             drugs.Add(drug);
             return true;
         }
 
-        public bool RemoveDrug(uint ID)
+        /*public bool RemoveDrug(uint ID)
         {
             foreach (Drug drug in drugs)
             {
@@ -43,7 +39,7 @@ namespace Drug_database
                 }
             }
             return false;
-        }
+        }*/
 
         public List<string> GetDrugNames()
         {
@@ -54,8 +50,8 @@ namespace Drug_database
             }
             return names;
         }
-        
-        public string GetDrugDescriptipn(uint ID)
+
+        /*public string GetDrugDescriptipn(uint ID)
         {
             foreach (Drug drug in drugs)
             {
@@ -66,7 +62,7 @@ namespace Drug_database
                 }
             }
             return null;
-        }
+        }*/
 
         public Drug GetDrugByName(string name)
         {
@@ -78,12 +74,29 @@ namespace Drug_database
             return null;
         }
 
+        public Drug GetDrugByIndex(int index) // method that not use ID property
+        {
+            if (index >= drugs.Count || index < 0)
+                return null;
+            else
+                return drugs[index];
+        }
+
         public List <Drug> GetDrugList()
         {
             var list = new List<Drug>();
             foreach (Drug drug in drugs)
                 list.Add(drug);
             return list;
+        }
+
+        public bool EditDrug(int index, string name, string desctription, string producer, int inStock, double price)
+        {
+            //foreach (string currentNames in GetDrugNames())
+            //    if (currentNames == name) return false;
+
+            drugs[index].EditDrug(name, desctription, producer, inStock, price);
+            return true;
         }
 
         public bool ExportToCSV(string FilePath)
@@ -139,7 +152,7 @@ namespace Drug_database
             object okno = CSVfile.Rows[0][0];
             for (int i = 0; i < CSVfile.Rows.Count; i++)
             {
-                drugs.Add(new Drug(Convert.ToUInt32(CSVfile.Rows[i].Field<string>("ID")), CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 0, CSVfile.Rows[i].Field<string>("PhotoPath")));
+                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 0, CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
             return true;
         }

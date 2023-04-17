@@ -16,7 +16,7 @@ namespace DrugDatabaseMetro
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DrugDatabase());
+            Application.Run(new DrugDatabaseForm());
         }
     }
 }
