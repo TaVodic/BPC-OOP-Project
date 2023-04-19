@@ -26,6 +26,19 @@ namespace Drug_database
             drugs.Add(drug);
             return true;
         }
+        public bool EditDrug(int index, string name, string desctription, string producer, int inStock, double price)
+        {
+            //foreach (string currentNames in GetDrugNames())
+            //    if (currentNames == name) return false;
+
+            drugs[index].EditDrug(name, desctription, producer, inStock, price);
+            return true;
+        }
+
+        public void DeleteDrug(int index)
+        {
+            drugs.Remove(drugs[index]);
+        }
 
         /*public bool RemoveDrug(uint ID)
         {
@@ -88,15 +101,6 @@ namespace Drug_database
             foreach (Drug drug in drugs)
                 list.Add(drug);
             return list;
-        }
-
-        public bool EditDrug(int index, string name, string desctription, string producer, int inStock, double price)
-        {
-            //foreach (string currentNames in GetDrugNames())
-            //    if (currentNames == name) return false;
-
-            drugs[index].EditDrug(name, desctription, producer, inStock, price);
-            return true;
         }
 
         public bool ExportToCSV(string FilePath)

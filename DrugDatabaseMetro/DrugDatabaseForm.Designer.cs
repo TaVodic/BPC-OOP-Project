@@ -32,7 +32,6 @@
             this.Menu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.TabSearch = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.metroSetLabel7 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetTextBox1 = new MetroSet_UI.Controls.MetroSetTextBox();
             this.metroSetButton4 = new MetroSet_UI.Controls.MetroSetButton();
             this.Label_DrgInStock = new MetroSet_UI.Controls.MetroSetLabel();
             this.DrgInStock = new MetroSet_UI.Controls.MetroSetLabel();
@@ -49,9 +48,10 @@
             this.SearchBtn = new MetroSet_UI.Controls.MetroSetButton();
             this.metroSetLabel6 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetPanel1 = new MetroSet_UI.Controls.MetroSetPanel();
+            this.metroSetTextBox1 = new MetroSet_UI.Controls.MetroSetTextBox();
             this.TabEdit = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.EditBtn = new MetroSet_UI.Controls.MetroSetButton();
-            this.metroSetButton2 = new MetroSet_UI.Controls.MetroSetButton();
+            this.DeleteBtn = new MetroSet_UI.Controls.MetroSetButton();
             this.AddBtn = new MetroSet_UI.Controls.MetroSetButton();
             this.BtnImport = new MetroSet_UI.Controls.MetroSetButton();
             this.BtnExport = new MetroSet_UI.Controls.MetroSetButton();
@@ -77,7 +77,7 @@
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(792, 8);
+            this.metroSetControlBox1.Location = new System.Drawing.Point(866, 8);
             this.metroSetControlBox1.MaximizeBox = true;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
@@ -109,7 +109,7 @@
             this.Menu.Name = "Menu";
             this.Menu.SelectedIndex = 1;
             this.Menu.SelectedTextColor = System.Drawing.Color.White;
-            this.Menu.Size = new System.Drawing.Size(876, 431);
+            this.Menu.Size = new System.Drawing.Size(951, 471);
             this.Menu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Menu.Speed = 100;
             this.Menu.Style = MetroSet_UI.Enums.Style.Light;
@@ -124,7 +124,6 @@
             // TabSearch
             // 
             this.TabSearch.BaseColor = System.Drawing.Color.White;
-            this.TabSearch.Controls.Add(this.metroSetLabel7);
             this.TabSearch.Controls.Add(this.metroSetButton4);
             this.TabSearch.Controls.Add(this.Label_DrgInStock);
             this.TabSearch.Controls.Add(this.DrgInStock);
@@ -139,7 +138,6 @@
             this.TabSearch.Controls.Add(this.metroSetLabel1);
             this.TabSearch.Controls.Add(this.DrgSearch);
             this.TabSearch.Controls.Add(this.SearchBtn);
-            this.TabSearch.Controls.Add(this.metroSetLabel6);
             this.TabSearch.Controls.Add(this.metroSetPanel1);
             this.TabSearch.Font = null;
             this.TabSearch.ImageIndex = 0;
@@ -147,7 +145,7 @@
             this.TabSearch.IsDerivedStyle = true;
             this.TabSearch.Location = new System.Drawing.Point(4, 42);
             this.TabSearch.Name = "TabSearch";
-            this.TabSearch.Size = new System.Drawing.Size(868, 385);
+            this.TabSearch.Size = new System.Drawing.Size(943, 425);
             this.TabSearch.Style = MetroSet_UI.Enums.Style.Light;
             this.TabSearch.StyleManager = null;
             this.TabSearch.TabIndex = 0;
@@ -160,7 +158,7 @@
             // 
             this.metroSetLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel7.IsDerivedStyle = true;
-            this.metroSetLabel7.Location = new System.Drawing.Point(743, 226);
+            this.metroSetLabel7.Location = new System.Drawing.Point(125, 56);
             this.metroSetLabel7.Name = "metroSetLabel7";
             this.metroSetLabel7.Size = new System.Drawing.Size(100, 23);
             this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Light;
@@ -169,35 +167,6 @@
             this.metroSetLabel7.Text = "pcs";
             this.metroSetLabel7.ThemeAuthor = "Narwin";
             this.metroSetLabel7.ThemeName = "MetroLite";
-            // 
-            // metroSetTextBox1
-            // 
-            this.metroSetTextBox1.AutoCompleteCustomSource = null;
-            this.metroSetTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.metroSetTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.metroSetTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.metroSetTextBox1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroSetTextBox1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.metroSetTextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.metroSetTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetTextBox1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.metroSetTextBox1.Image = null;
-            this.metroSetTextBox1.IsDerivedStyle = true;
-            this.metroSetTextBox1.Lines = null;
-            this.metroSetTextBox1.Location = new System.Drawing.Point(19, 48);
-            this.metroSetTextBox1.MaxLength = 32767;
-            this.metroSetTextBox1.Multiline = false;
-            this.metroSetTextBox1.Name = "metroSetTextBox1";
-            this.metroSetTextBox1.ReadOnly = false;
-            this.metroSetTextBox1.Size = new System.Drawing.Size(100, 31);
-            this.metroSetTextBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetTextBox1.StyleManager = null;
-            this.metroSetTextBox1.TabIndex = 18;
-            this.metroSetTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.metroSetTextBox1.ThemeAuthor = "Narwin";
-            this.metroSetTextBox1.ThemeName = "MetroLite";
-            this.metroSetTextBox1.UseSystemPasswordChar = false;
-            this.metroSetTextBox1.WatermarkText = "";
             // 
             // metroSetButton4
             // 
@@ -286,7 +255,7 @@
             this.metroSetLabel4.IsDerivedStyle = true;
             this.metroSetLabel4.Location = new System.Drawing.Point(29, 124);
             this.metroSetLabel4.Name = "metroSetLabel4";
-            this.metroSetLabel4.Size = new System.Drawing.Size(81, 23);
+            this.metroSetLabel4.Size = new System.Drawing.Size(92, 23);
             this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel4.StyleManager = null;
             this.metroSetLabel4.TabIndex = 8;
@@ -312,9 +281,9 @@
             this.DrgDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.DrgDescription.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DrgDescription.IsDerivedStyle = true;
-            this.DrgDescription.Location = new System.Drawing.Point(116, 226);
+            this.DrgDescription.Location = new System.Drawing.Point(133, 226);
             this.DrgDescription.Name = "DrgDescription";
-            this.DrgDescription.Size = new System.Drawing.Size(496, 130);
+            this.DrgDescription.Size = new System.Drawing.Size(479, 130);
             this.DrgDescription.Style = MetroSet_UI.Enums.Style.Light;
             this.DrgDescription.StyleManager = null;
             this.DrgDescription.TabIndex = 6;
@@ -327,7 +296,7 @@
             this.metroSetLabel3.IsDerivedStyle = true;
             this.metroSetLabel3.Location = new System.Drawing.Point(29, 226);
             this.metroSetLabel3.Name = "metroSetLabel3";
-            this.metroSetLabel3.Size = new System.Drawing.Size(92, 23);
+            this.metroSetLabel3.Size = new System.Drawing.Size(110, 23);
             this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel3.StyleManager = null;
             this.metroSetLabel3.TabIndex = 5;
@@ -354,7 +323,7 @@
             this.metroSetLabel2.IsDerivedStyle = true;
             this.metroSetLabel2.Location = new System.Drawing.Point(29, 101);
             this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(54, 23);
+            this.metroSetLabel2.Size = new System.Drawing.Size(92, 23);
             this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 3;
@@ -436,7 +405,7 @@
             // 
             this.metroSetLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel6.IsDerivedStyle = true;
-            this.metroSetLabel6.Location = new System.Drawing.Point(637, 192);
+            this.metroSetLabel6.Location = new System.Drawing.Point(19, 22);
             this.metroSetLabel6.Name = "metroSetLabel6";
             this.metroSetLabel6.Size = new System.Drawing.Size(100, 23);
             this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Light;
@@ -451,9 +420,11 @@
             this.metroSetPanel1.BackgroundColor = System.Drawing.Color.White;
             this.metroSetPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.metroSetPanel1.BorderThickness = 1;
+            this.metroSetPanel1.Controls.Add(this.metroSetLabel7);
             this.metroSetPanel1.Controls.Add(this.metroSetTextBox1);
+            this.metroSetPanel1.Controls.Add(this.metroSetLabel6);
             this.metroSetPanel1.IsDerivedStyle = true;
-            this.metroSetPanel1.Location = new System.Drawing.Point(618, 170);
+            this.metroSetPanel1.Location = new System.Drawing.Point(686, 210);
             this.metroSetPanel1.Name = "metroSetPanel1";
             this.metroSetPanel1.Size = new System.Drawing.Size(254, 212);
             this.metroSetPanel1.Style = MetroSet_UI.Enums.Style.Light;
@@ -462,11 +433,40 @@
             this.metroSetPanel1.ThemeAuthor = "Narwin";
             this.metroSetPanel1.ThemeName = "MetroLite";
             // 
+            // metroSetTextBox1
+            // 
+            this.metroSetTextBox1.AutoCompleteCustomSource = null;
+            this.metroSetTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.metroSetTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.metroSetTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.metroSetTextBox1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetTextBox1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.metroSetTextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.metroSetTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.metroSetTextBox1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetTextBox1.Image = null;
+            this.metroSetTextBox1.IsDerivedStyle = true;
+            this.metroSetTextBox1.Lines = null;
+            this.metroSetTextBox1.Location = new System.Drawing.Point(19, 48);
+            this.metroSetTextBox1.MaxLength = 32767;
+            this.metroSetTextBox1.Multiline = false;
+            this.metroSetTextBox1.Name = "metroSetTextBox1";
+            this.metroSetTextBox1.ReadOnly = false;
+            this.metroSetTextBox1.Size = new System.Drawing.Size(100, 31);
+            this.metroSetTextBox1.Style = MetroSet_UI.Enums.Style.Light;
+            this.metroSetTextBox1.StyleManager = null;
+            this.metroSetTextBox1.TabIndex = 18;
+            this.metroSetTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.metroSetTextBox1.ThemeAuthor = "Narwin";
+            this.metroSetTextBox1.ThemeName = "MetroLite";
+            this.metroSetTextBox1.UseSystemPasswordChar = false;
+            this.metroSetTextBox1.WatermarkText = "";
+            // 
             // TabEdit
             // 
             this.TabEdit.BaseColor = System.Drawing.Color.White;
             this.TabEdit.Controls.Add(this.EditBtn);
-            this.TabEdit.Controls.Add(this.metroSetButton2);
+            this.TabEdit.Controls.Add(this.DeleteBtn);
             this.TabEdit.Controls.Add(this.AddBtn);
             this.TabEdit.Controls.Add(this.BtnImport);
             this.TabEdit.Controls.Add(this.BtnExport);
@@ -477,7 +477,7 @@
             this.TabEdit.IsDerivedStyle = true;
             this.TabEdit.Location = new System.Drawing.Point(4, 42);
             this.TabEdit.Name = "TabEdit";
-            this.TabEdit.Size = new System.Drawing.Size(868, 385);
+            this.TabEdit.Size = new System.Drawing.Size(943, 425);
             this.TabEdit.Style = MetroSet_UI.Enums.Style.Light;
             this.TabEdit.StyleManager = null;
             this.TabEdit.TabIndex = 1;
@@ -496,7 +496,7 @@
             this.EditBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.EditBtn.HoverTextColor = System.Drawing.Color.White;
             this.EditBtn.IsDerivedStyle = true;
-            this.EditBtn.Location = new System.Drawing.Point(136, 347);
+            this.EditBtn.Location = new System.Drawing.Point(136, 363);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.EditBtn.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -513,32 +513,32 @@
             this.EditBtn.ThemeName = "MetroLite";
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
-            // metroSetButton2
+            // DeleteBtn
             // 
-            this.metroSetButton2.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton2.DisabledForeColor = System.Drawing.Color.Gray;
-            this.metroSetButton2.Enabled = false;
-            this.metroSetButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetButton2.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.metroSetButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.metroSetButton2.HoverTextColor = System.Drawing.Color.White;
-            this.metroSetButton2.IsDerivedStyle = true;
-            this.metroSetButton2.Location = new System.Drawing.Point(269, 347);
-            this.metroSetButton2.Name = "metroSetButton2";
-            this.metroSetButton2.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton2.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton2.NormalTextColor = System.Drawing.Color.White;
-            this.metroSetButton2.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.metroSetButton2.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.metroSetButton2.PressTextColor = System.Drawing.Color.White;
-            this.metroSetButton2.Size = new System.Drawing.Size(113, 35);
-            this.metroSetButton2.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetButton2.StyleManager = null;
-            this.metroSetButton2.TabIndex = 5;
-            this.metroSetButton2.Text = "Delete";
-            this.metroSetButton2.ThemeAuthor = "Narwin";
-            this.metroSetButton2.ThemeName = "MetroLite";
+            this.DeleteBtn.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtn.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtn.DisabledForeColor = System.Drawing.Color.Gray;
+            this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DeleteBtn.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.DeleteBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.DeleteBtn.HoverTextColor = System.Drawing.Color.White;
+            this.DeleteBtn.IsDerivedStyle = true;
+            this.DeleteBtn.Location = new System.Drawing.Point(269, 363);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtn.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtn.NormalTextColor = System.Drawing.Color.White;
+            this.DeleteBtn.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.DeleteBtn.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.DeleteBtn.PressTextColor = System.Drawing.Color.White;
+            this.DeleteBtn.Size = new System.Drawing.Size(113, 35);
+            this.DeleteBtn.Style = MetroSet_UI.Enums.Style.Light;
+            this.DeleteBtn.StyleManager = null;
+            this.DeleteBtn.TabIndex = 5;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.ThemeAuthor = "Narwin";
+            this.DeleteBtn.ThemeName = "MetroLite";
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // AddBtn
             // 
@@ -550,7 +550,7 @@
             this.AddBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.AddBtn.HoverTextColor = System.Drawing.Color.White;
             this.AddBtn.IsDerivedStyle = true;
-            this.AddBtn.Location = new System.Drawing.Point(3, 347);
+            this.AddBtn.Location = new System.Drawing.Point(0, 363);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.AddBtn.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -577,7 +577,7 @@
             this.BtnImport.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.BtnImport.HoverTextColor = System.Drawing.Color.White;
             this.BtnImport.IsDerivedStyle = true;
-            this.BtnImport.Location = new System.Drawing.Point(605, 347);
+            this.BtnImport.Location = new System.Drawing.Point(605, 363);
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.BtnImport.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -604,7 +604,7 @@
             this.BtnExport.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.BtnExport.HoverTextColor = System.Drawing.Color.White;
             this.BtnExport.IsDerivedStyle = true;
-            this.BtnExport.Location = new System.Drawing.Point(739, 347);
+            this.BtnExport.Location = new System.Drawing.Point(739, 363);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.BtnExport.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -685,9 +685,9 @@
             // 
             // DrugDatabaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 532);
+            this.ClientSize = new System.Drawing.Size(981, 579);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.Error);
@@ -729,7 +729,7 @@
         private System.Windows.Forms.ListView DrugList;
         private System.Windows.Forms.ColumnHeader ColName;
         private System.Windows.Forms.ColumnHeader ColProducer;
-        private MetroSet_UI.Controls.MetroSetButton metroSetButton2;
+        private MetroSet_UI.Controls.MetroSetButton DeleteBtn;
         private MetroSet_UI.Controls.MetroSetButton AddBtn;
         private MetroSet_UI.Controls.MetroSetButton EditBtn;
         private System.Windows.Forms.ColumnHeader ColID;

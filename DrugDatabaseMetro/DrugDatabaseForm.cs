@@ -61,6 +61,69 @@ namespace DrugDatabaseMetro
             }
         }
 
+        private void ListDrugs()
+        {
+            if (Menu.SelectedIndex == 1)
+            {
+                DrugList.Items.Clear();
+                var list = database.GetDrugList();
+                int ID = 0;
+                foreach (var drug in list)
+                {                    
+                    ListViewItem item = new ListViewItem(ID.ToString());
+                    item.SubItems.Add(drug.Name);
+                    item.SubItems.Add(drug.Producer);
+                    item.SubItems.Add(drug.InStock.ToString());
+                    item.SubItems.Add(drug.Price.ToString("0.00") + " €");
+                    item.SubItems.Add(drug.Description);
+                    DrugList.Items.Add(item);
+                    ID++;
+                }
+            }
+        }
+
+        // Add, edit and remove functions
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Add);
+            form2.ShowDialog();
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            int index;
+            try
+            {
+                index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Select item for editing!", "Error");
+                return;
+            }
+            
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, index);
+            form2.ShowDialog();
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            int index;
+            try
+            {
+                index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Select item to delete!", "Error");
+                return;
+            }
+            database.DeleteDrug(index);
+            AutoCompleteInit();
+            ListDrugs();
+        }
+
+        // CSV import and export
         private void BtnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
@@ -97,55 +160,12 @@ namespace DrugDatabaseMetro
             ListDrugs();
         }
 
-        private void ListDrugs()
-        {
-            if (Menu.SelectedIndex == 1)
-            {
-                DrugList.Items.Clear();
-                var list = database.GetDrugList();
-                int ID = 0;
-                foreach (var drug in list)
-                {                    
-                    ListViewItem item = new ListViewItem(ID.ToString());
-                    item.SubItems.Add(drug.Name);
-                    item.SubItems.Add(drug.Producer);
-                    item.SubItems.Add(drug.InStock.ToString());
-                    item.SubItems.Add(drug.Price.ToString("0.00") + " €");
-                    item.SubItems.Add(drug.Description);
-                    DrugList.Items.Add(item);
-                    ID++;
-                }
-            }
-        }
-
+        // other GUI functions
         private void Menu_SelectedIndexChanged(object sender, EventArgs e)
         {
             Error.Text = string.Empty;
             AutoCompleteInit();
             ListDrugs();
-        }
-
-        private void AddBtn_Click(object sender, EventArgs e)
-        {
-            EditingForm form2 = new EditingForm(EditingForm.Mode.Add);
-            form2.ShowDialog();
-        }
-
-        private void EditBtn_Click(object sender, EventArgs e)
-        {
-            int index;
-            try
-            {
-                index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Select item for editing!", "Error");
-                return;
-            }
-            
-            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, index);
-            form2.ShowDialog();
         }
 
         private void DrugDatabaseForm_Activated(object sender, EventArgs e)
