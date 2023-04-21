@@ -156,7 +156,7 @@ namespace Drug_database
             object okno = CSVfile.Rows[0][0];
             for (int i = 0; i < CSVfile.Rows.Count; i++)
             {
-                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 0, CSVfile.Rows[i].Field<string>("PhotoPath")));
+                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), ((double)Convert.ToInt32(CSVfile.Rows[i].Field<string>("Price"))) / 100.00, CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
             return true;
         }

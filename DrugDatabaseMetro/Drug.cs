@@ -39,7 +39,7 @@ namespace Drug_database
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
-            str.AppendFormat("{0},{1},\"{2}\",{3},{4},{5},{6}", this.ID ,this.Name, this.Description, this.Producer, this.InStock, this.Price.ToString("0,0.00", new CultureInfo("en-US", false)), this.PhotoPath);
+            str.AppendFormat("{0},{1},\"{2}\",{3},{4},{5},{6}", this.ID ,this.Name, this.Description, this.Producer, this.InStock, this.Price*100, this.PhotoPath);
             return str.ToString();
         }
 
