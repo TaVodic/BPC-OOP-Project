@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Drug_database
@@ -26,65 +27,36 @@ namespace Drug_database
             drugs.Add(drug);
             return true;
         }
-        public bool EditDrug(int index, string name, string desctription, string producer, int inStock, double price)
+        public bool EditDrug(Drug drug, string name, string desctription, string producer, int inStock, double price)
         {
             //foreach (string currentNames in GetDrugNames())
             //    if (currentNames == name) return false;
 
-            drugs[index].EditDrug(name, desctription, producer, inStock, price);
+            drug.EditDrug(name, desctription, producer, inStock, price);
             return true;
         }
 
-        public void DeleteDrug(int index)
+        public void DeleteDrug(Drug drug)
         {
-            drugs.Remove(drugs[index]);
+            drugs.Remove(drug);
         }
-
-        /*public bool RemoveDrug(uint ID)
-        {
-            foreach (Drug drug in drugs)
-            {
-                if (drug.ID == ID)
-                {
-                    drugs.Remove(drug);
-                    lastID = ID;
-                    return true;
-                }
-            }
-            return false;
-        }*/
-
-        public List<string> GetDrugNames()
-        {
-            List<string> names = new List<string>();
-            foreach (Drug drug in drugs)
-            {
-                names.Add(drug.Name);
-            }
-            return names;
-        }
-
-        /*public string GetDrugDescriptipn(uint ID)
-        {
-            foreach (Drug drug in drugs)
-            {
-                if (drug.ID == ID) {
-                    string description = drug.Description;
-                    description = description.Replace("\"", "");
-                    return description;
-                }
-            }
-            return null;
-        }*/
 
         public Drug GetDrugByName(string name)
         {
-            Drug searchedDrug = drugs.FirstOrDefault(drug => drug.Name == name);
-            if (searchedDrug != null)
+            IEnumerable<Drug> searchedDrug =
+                from drg in drugs 
+                where drg.Name == name
+                select drg;
+
+            try
             {
-                return searchedDrug;
+                return searchedDrug.First();
             }
-            return null;
+            catch (Exception ex)
+            {                
+                MessageBox.Show("Cannot find selectes drug!", "Error");
+                return null;
+            }            
         }
 
         public Drug GetDrugByIndex(int index) // method that not use ID property
@@ -95,12 +67,19 @@ namespace Drug_database
                 return drugs[index];
         }
 
+        public List<string> GetDrugNames()
+        {
+            var names = new List<string>();
+            foreach (Drug drug in drugs)
+            {
+                names.Add(drug.Name);
+            }
+            return names;
+        }
+
         public List <Drug> GetDrugList()
         {
-            var list = new List<Drug>();
-            foreach (Drug drug in drugs)
-                list.Add(drug);
-            return list;
+            return drugs.ToList();
         }
 
         public bool ExportToCSV(string FilePath)
@@ -156,7 +135,18 @@ namespace Drug_database
             object okno = CSVfile.Rows[0][0];
             for (int i = 0; i < CSVfile.Rows.Count; i++)
             {
-                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), CSVfile.Rows[i].Field<string>("Description"), CSVfile.Rows[i].Field<string>("Producer"), Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), ((double)Convert.ToInt32(CSVfile.Rows[i].Field<string>("Price"))) / 100.00, CSVfile.Rows[i].Field<string>("PhotoPath")));
+                /*drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), 
+                    CSVfile.Rows[i].Field<string>("Description"), 
+                    CSVfile.Rows[i].Field<string>("Producer"), 
+                    Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 
+                    ((double)Convert.ToInt32(CSVfile.Rows[i].Field<string>("Price"))) / 100.00, 
+                    CSVfile.Rows[i].Field<string>("PhotoPath")));*/
+                drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), 
+                    CSVfile.Rows[i].Field<string>("Description"), 
+                    CSVfile.Rows[i].Field<string>("Producer"), 
+                    Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 
+                    0, 
+                    CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
             return true;
         }

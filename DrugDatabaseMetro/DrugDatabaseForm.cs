@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace DrugDatabaseMetro
             InitializeComponent();
         }
 
+        private Drug searchedDrug;
+
         public static DrugDatabaseForm instance;
 
         public Database database = new Database();
@@ -26,27 +29,30 @@ namespace DrugDatabaseMetro
         private void DrugDatabase_Load(object sender, EventArgs e)
         {
             instance = this;
-            DrgName.Text = string.Empty;
             //database.AddNewDrug(new Drug("Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
             //database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
             //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
             //AutoCompleteInit();
-            ListDrugs();            
-        }
 
-        private void AutoCompleteInit()
-        {
-            var MyCollection = new AutoCompleteStringCollection();
-            foreach (string name in database.GetDrugNames())
+            string FileName = "C:\\Users\\Martin\\source\\repos\\TaVodic\\BPC-OOP-Project\\CSV\\6paraleny.csv";
+            if (!database.ImportFromCSV(FileName))
             {
-                MyCollection.Add(name); // add drugs to autocomplete
+                Error.Text = "Initial import failed! No databse is present, please import one.";
+                Error.ForeColor = Color.Red;
             }
-            DrgSearch.AutoCompleteCustomSource = MyCollection;
+            else
+            {
+                Error.Text = "Initial import has been successful";
+                Error.ForeColor = Color.Green;
+            }
+
+            ListDrugs();            
         }
 
         private void SearchBtn_Click(object sender, EventArgs e) // display search results
         {
             Drug drug = database.GetDrugByName(DrgSearch.Text);
+            searchedDrug = drug;
             if (drug != null)
             {
                 DrgName.Text = drug.Name;
@@ -58,27 +64,6 @@ namespace DrugDatabaseMetro
                     DrgInStock.ForeColor = Color.Red;
                 else
                     DrgInStock.ForeColor = Color.Green;
-            }
-        }
-
-        private void ListDrugs()
-        {
-            if (Menu.SelectedIndex == 1)
-            {
-                DrugList.Items.Clear();
-                var list = database.GetDrugList();
-                int ID = 0;
-                foreach (var drug in list)
-                {                    
-                    ListViewItem item = new ListViewItem(ID.ToString());
-                    item.SubItems.Add(drug.Name);
-                    item.SubItems.Add(drug.Producer);
-                    item.SubItems.Add(drug.InStock.ToString());
-                    item.SubItems.Add(drug.Price.ToString("0.00") + " €");
-                    item.SubItems.Add(drug.Description);
-                    DrugList.Items.Add(item);
-                    ID++;
-                }
             }
         }
 
@@ -103,7 +88,7 @@ namespace DrugDatabaseMetro
                 return;
             }
             
-            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, index);
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, searchedDrug);
             form2.ShowDialog();
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -118,9 +103,36 @@ namespace DrugDatabaseMetro
                 MessageBox.Show("Select item to delete!", "Error");
                 return;
             }
-            database.DeleteDrug(index);
+            
+            database.DeleteDrug(database.GetDrugByIndex(index));
             AutoCompleteInit();
             ListDrugs();
+        }
+
+        private void EditBtnSerach_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteBtnSerach_Click(object sender, EventArgs e)
+        {
+            if (searchedDrug != null)
+            {
+                database.DeleteDrug(searchedDrug);
+                AutoCompleteInit();
+                Error.Text = "Drug successfully deleted!";
+                Error.ForeColor = Color.Orange;
+                DrgSearch.Text = string.Empty;
+                DrgName.Text = string.Empty;
+                DrgDescription.Text = string.Empty;
+                DrgProducer.Text = string.Empty;
+                DrgPrice.Text = string.Empty;
+                DrgInStock.Text = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Search item to delete!", "Error");
+            }
         }
 
         // CSV import and export
@@ -158,6 +170,39 @@ namespace DrugDatabaseMetro
             }
             AutoCompleteInit();
             ListDrugs();
+        }
+
+        // own functions
+
+        private void AutoCompleteInit()
+        {
+            var MyCollection = new AutoCompleteStringCollection();
+            foreach (string name in database.GetDrugNames())
+            {
+                MyCollection.Add(name); // add drugs to autocomplete
+            }
+            DrgSearch.AutoCompleteCustomSource = MyCollection;
+        }
+
+        private void ListDrugs()
+        {
+            if (Menu.SelectedIndex == 1)
+            {
+                DrugList.Items.Clear();
+                var list = database.GetDrugList();
+                int ID = 0;
+                foreach (var drug in list)
+                {
+                    ListViewItem item = new ListViewItem(ID.ToString());
+                    item.SubItems.Add(drug.Name);
+                    item.SubItems.Add(drug.Producer);
+                    item.SubItems.Add(drug.InStock.ToString());
+                    item.SubItems.Add(drug.Price.ToString("0.00") + " €");
+                    item.SubItems.Add(drug.Description);
+                    DrugList.Items.Add(item);
+                    ID++;
+                }
+            }
         }
 
         // other GUI functions

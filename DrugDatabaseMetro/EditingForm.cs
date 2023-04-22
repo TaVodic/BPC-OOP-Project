@@ -23,18 +23,18 @@ namespace DrugDatabaseMetro
         }
 
         private Mode _mode;
-        private int _EditIndex;
+        private string _editDrug;
         public EditingForm(Mode mode)
         {
             InitializeComponent();            
             _mode = mode;
         }
 
-        public EditingForm(Mode mode, int index)
+        public EditingForm(Mode mode, Drug drug)
         {
             InitializeComponent();
             _mode = mode;
-            _EditIndex = index;
+            _editDrug = drug.Name;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -44,9 +44,9 @@ namespace DrugDatabaseMetro
 
         private void EditingForm_Load(object sender, EventArgs e)
         {
+            Drug drug = DrugDatabaseForm.instance.database.GetDrugByName(_editDrug);
             if (_mode == Mode.Edit) 
-            {
-                Drug drug = DrugDatabaseForm.instance.database.GetDrugByIndex(_EditIndex);
+            {                
                 DrgName.Text = drug.Name;
                 DrgProducer .Text = drug.Producer;
                 DrgDescription.Text = drug.Description;
@@ -93,7 +93,7 @@ namespace DrugDatabaseMetro
                     this.Close();
             } else if (_mode == Mode.Edit) // edit existing drug by index
             {               
-                var result = DrugDatabaseForm.instance.database.EditDrug(_EditIndex,
+                var result = DrugDatabaseForm.instance.database.EditDrug(DrugDatabaseForm.instance.database.GetDrugByName(_editDrug),
                     DrgName.Text,
                     DrgDescription.Text,
                     DrgProducer.Text,
