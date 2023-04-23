@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -48,15 +49,7 @@ namespace Drug_database
                 where drg.Name == name
                 select drg;
 
-            try
-            {
-                return searchedDrug.First();
-            }
-            catch (Exception ex)
-            {                
-                MessageBox.Show("Cannot find selectes drug!", "Error");
-                return null;
-            }            
+            return searchedDrug.First();           
         }
 
         public Drug GetDrugByIndex(int index) // method that not use ID property
@@ -98,9 +91,9 @@ namespace Drug_database
             return true;
         }
 
-        public bool ImportFromCSV(string FilePath)
+        public void ImportFromCSV(string FilePath)
         {
-            if (!File.Exists(FilePath)) return false;
+            if (!File.Exists(FilePath)) new FileNotFoundException();
             StreamReader file = new StreamReader(FilePath);
             string[] headers = file.ReadLine().Split(',');
             DataTable CSVfile = new DataTable();
@@ -114,40 +107,38 @@ namespace Drug_database
                 string description = row;
                 int from = description.IndexOf("\"") + 1;
                 int to = description.LastIndexOf("\"");
-                try
+
+                description = description.Substring(from, to - from);
+                row = row.Replace(description, "#");
+                string[] rows = row.Split(',');
+                DataRow dr = CSVfile.NewRow();
+                for (int i = 0; i < headers.Length; i++)
                 {
-                    description = description.Substring(from, to - from);
-                    row = row.Replace(description, "#");
-                    string[] rows = row.Split(',');
-                    DataRow dr = CSVfile.NewRow();
-                    for (int i = 0; i < headers.Length; i++)
-                    {
-                        if (rows[i].IndexOf("#") != -1) dr[i] = description;
-                        else dr[i] = rows[i];
-                    }
-                    CSVfile.Rows.Add(dr);
+                    if (rows[i].IndexOf("#") != -1) dr[i] = description;
+                    else dr[i] = rows[i];                    
                 }
-                catch
-                {
-                    return false;
-                }
+                CSVfile.Rows.Add(dr);
+
             }
-            object okno = CSVfile.Rows[0][0];
+            
             for (int i = 0; i < CSVfile.Rows.Count; i++)
             {
-                /*drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), 
-                    CSVfile.Rows[i].Field<string>("Description"), 
-                    CSVfile.Rows[i].Field<string>("Producer"), 
-                    Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 
-                    ((double)Convert.ToInt32(CSVfile.Rows[i].Field<string>("Price"))) / 100.00, 
-                    CSVfile.Rows[i].Field<string>("PhotoPath")));*/
+                var temp = CSVfile.Rows[i].Field<string>("Price");
+                
                 drugs.Add(new Drug(CSVfile.Rows[i].Field<string>("Name"), 
                     CSVfile.Rows[i].Field<string>("Description"), 
                     CSVfile.Rows[i].Field<string>("Producer"), 
-                    Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")), 
-                    0, 
+                    Convert.ToInt32(CSVfile.Rows[i].Field<string>("InStock")),
+                    Convert.ToDouble(temp, CultureInfo.InvariantCulture),
                     CSVfile.Rows[i].Field<string>("PhotoPath")));
             }
+        }
+
+        public bool SellDrug(Drug drug, int amount)
+        {
+            if (amount < 0)
+                return false;
+            drug.SellDrug(amount);
             return true;
         }
 

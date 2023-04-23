@@ -15,7 +15,7 @@ namespace Drug_database
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string Producer { get; private set; }
-        public int InStock  { get; set; }
+        public int InStock  { get; private set; }
         public double Price  { get; private set; }
         public string PhotoPath { get; private set; }
 
@@ -29,9 +29,10 @@ namespace Drug_database
             this.PhotoPath = photoPath;
         }
 
-        public bool sell(int amout)
+        public bool SellDrug(int amout)
         {
-            if((InStock - amout) >= 0)InStock = InStock - amout;
+            if((InStock - amout) >= 0)
+                InStock = InStock - amout;
             else return false;
             return true;
         }
@@ -39,7 +40,7 @@ namespace Drug_database
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
-            str.AppendFormat("{0},{1},\"{2}\",{3},{4},{5},{6}", this.ID ,this.Name, this.Description, this.Producer, this.InStock, this.Price*100, this.PhotoPath);
+            str.AppendFormat("{0},{1},\"{2}\",{3},{4},{5},{6}", this.ID ,this.Name, this.Description, this.Producer, this.InStock, this.Price, this.PhotoPath);
             return str.ToString();
         }
 

@@ -23,18 +23,18 @@ namespace DrugDatabaseMetro
         }
 
         private Mode _mode;
-        private string _editDrug;
+        private Drug _editDrug;
         public EditingForm(Mode mode)
         {
             InitializeComponent();            
             _mode = mode;
         }
 
-        public EditingForm(Mode mode, Drug drug)
+        public EditingForm(Mode mode, string drgName)
         {
             InitializeComponent();
             _mode = mode;
-            _editDrug = drug.Name;
+            _editDrug = DrugDatabaseForm.instance.database.GetDrugByName(drgName);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace DrugDatabaseMetro
 
         private void EditingForm_Load(object sender, EventArgs e)
         {
-            Drug drug = DrugDatabaseForm.instance.database.GetDrugByName(_editDrug);
+            Drug drug = _editDrug;
             if (_mode == Mode.Edit) 
             {                
                 DrgName.Text = drug.Name;
@@ -88,19 +88,19 @@ namespace DrugDatabaseMetro
                     price,
                     string.Empty));
                 if (!result)
-                    MessageBox.Show("Drug with this name already exist!", "Error");
+                    MessageBox.Show("Drug with this name already exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     this.Close();
             } else if (_mode == Mode.Edit) // edit existing drug by index
             {               
-                var result = DrugDatabaseForm.instance.database.EditDrug(DrugDatabaseForm.instance.database.GetDrugByName(_editDrug),
+                var result = DrugDatabaseForm.instance.database.EditDrug(_editDrug,
                     DrgName.Text,
                     DrgDescription.Text,
                     DrgProducer.Text,
                     stock,
                     price);
                 if (!result)
-                    MessageBox.Show("Drug with this name already exist!", "Error");
+                    MessageBox.Show("Drug with this name already exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     this.Close();
             }            

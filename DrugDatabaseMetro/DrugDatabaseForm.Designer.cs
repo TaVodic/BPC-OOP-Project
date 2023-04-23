@@ -31,7 +31,8 @@
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.Menu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.TabSearch = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.metroSetButton4 = new MetroSet_UI.Controls.MetroSetButton();
+            this.DeleteBtnSerach = new MetroSet_UI.Controls.MetroSetButton();
+            this.EditBtnSerach = new MetroSet_UI.Controls.MetroSetButton();
             this.Label_DrgInStock = new MetroSet_UI.Controls.MetroSetLabel();
             this.DrgInStock = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel5 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -46,8 +47,10 @@
             this.DrgSearch = new MetroSet_UI.Controls.MetroSetTextBox();
             this.SearchBtn = new MetroSet_UI.Controls.MetroSetButton();
             this.metroSetPanel1 = new MetroSet_UI.Controls.MetroSetPanel();
+            this.metroSetLabel8 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.sellBtn = new MetroSet_UI.Controls.MetroSetButton();
             this.metroSetLabel7 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetTextBox1 = new MetroSet_UI.Controls.MetroSetTextBox();
+            this.sellBox = new MetroSet_UI.Controls.MetroSetTextBox();
             this.metroSetLabel6 = new MetroSet_UI.Controls.MetroSetLabel();
             this.TabEdit = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.EditBtn = new MetroSet_UI.Controls.MetroSetButton();
@@ -63,9 +66,6 @@
             this.ColPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Error = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel8 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.EditBtnSerach = new MetroSet_UI.Controls.MetroSetButton();
-            this.DeleteBtnSerach = new MetroSet_UI.Controls.MetroSetButton();
             this.Menu.SuspendLayout();
             this.TabSearch.SuspendLayout();
             this.metroSetPanel1.SuspendLayout();
@@ -158,32 +158,59 @@
             this.TabSearch.ThemeName = "MetroLite";
             this.TabSearch.ToolTipText = null;
             // 
-            // metroSetButton4
+            // DeleteBtnSerach
             // 
-            this.metroSetButton4.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton4.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton4.DisabledForeColor = System.Drawing.Color.Gray;
-            this.metroSetButton4.Enabled = false;
-            this.metroSetButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetButton4.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.metroSetButton4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.metroSetButton4.HoverTextColor = System.Drawing.Color.White;
-            this.metroSetButton4.IsDerivedStyle = true;
-            this.metroSetButton4.Location = new System.Drawing.Point(122, 70);
-            this.metroSetButton4.Name = "metroSetButton4";
-            this.metroSetButton4.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton4.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton4.NormalTextColor = System.Drawing.Color.White;
-            this.metroSetButton4.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.metroSetButton4.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.metroSetButton4.PressTextColor = System.Drawing.Color.White;
-            this.metroSetButton4.Size = new System.Drawing.Size(101, 35);
-            this.metroSetButton4.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetButton4.StyleManager = null;
-            this.metroSetButton4.TabIndex = 16;
-            this.metroSetButton4.Text = "Sell item";
-            this.metroSetButton4.ThemeAuthor = "Narwin";
-            this.metroSetButton4.ThemeName = "MetroLite";
+            this.DeleteBtnSerach.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtnSerach.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtnSerach.DisabledForeColor = System.Drawing.Color.Gray;
+            this.DeleteBtnSerach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DeleteBtnSerach.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.DeleteBtnSerach.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.DeleteBtnSerach.HoverTextColor = System.Drawing.Color.White;
+            this.DeleteBtnSerach.IsDerivedStyle = true;
+            this.DeleteBtnSerach.Location = new System.Drawing.Point(268, 356);
+            this.DeleteBtnSerach.Name = "DeleteBtnSerach";
+            this.DeleteBtnSerach.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtnSerach.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.DeleteBtnSerach.NormalTextColor = System.Drawing.Color.White;
+            this.DeleteBtnSerach.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.DeleteBtnSerach.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.DeleteBtnSerach.PressTextColor = System.Drawing.Color.White;
+            this.DeleteBtnSerach.Size = new System.Drawing.Size(113, 35);
+            this.DeleteBtnSerach.Style = MetroSet_UI.Enums.Style.Light;
+            this.DeleteBtnSerach.StyleManager = null;
+            this.DeleteBtnSerach.TabIndex = 22;
+            this.DeleteBtnSerach.Text = "Delete";
+            this.DeleteBtnSerach.ThemeAuthor = "Narwin";
+            this.DeleteBtnSerach.ThemeName = "MetroLite";
+            this.DeleteBtnSerach.Click += new System.EventHandler(this.DeleteBtnSerach_Click);
+            // 
+            // EditBtnSerach
+            // 
+            this.EditBtnSerach.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.EditBtnSerach.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.EditBtnSerach.DisabledForeColor = System.Drawing.Color.Gray;
+            this.EditBtnSerach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.EditBtnSerach.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.EditBtnSerach.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.EditBtnSerach.HoverTextColor = System.Drawing.Color.White;
+            this.EditBtnSerach.IsDerivedStyle = true;
+            this.EditBtnSerach.Location = new System.Drawing.Point(133, 356);
+            this.EditBtnSerach.Name = "EditBtnSerach";
+            this.EditBtnSerach.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.EditBtnSerach.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.EditBtnSerach.NormalTextColor = System.Drawing.Color.White;
+            this.EditBtnSerach.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.EditBtnSerach.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.EditBtnSerach.PressTextColor = System.Drawing.Color.White;
+            this.EditBtnSerach.Size = new System.Drawing.Size(113, 35);
+            this.EditBtnSerach.Style = MetroSet_UI.Enums.Style.Light;
+            this.EditBtnSerach.StyleManager = null;
+            this.EditBtnSerach.TabIndex = 21;
+            this.EditBtnSerach.Text = "Edit";
+            this.EditBtnSerach.ThemeAuthor = "Narwin";
+            this.EditBtnSerach.ThemeName = "MetroLite";
+            this.EditBtnSerach.Click += new System.EventHandler(this.EditBtnSerach_Click);
             // 
             // Label_DrgInStock
             // 
@@ -397,9 +424,9 @@
             this.metroSetPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.metroSetPanel1.BorderThickness = 1;
             this.metroSetPanel1.Controls.Add(this.metroSetLabel8);
-            this.metroSetPanel1.Controls.Add(this.metroSetButton4);
+            this.metroSetPanel1.Controls.Add(this.sellBtn);
             this.metroSetPanel1.Controls.Add(this.metroSetLabel7);
-            this.metroSetPanel1.Controls.Add(this.metroSetTextBox1);
+            this.metroSetPanel1.Controls.Add(this.sellBox);
             this.metroSetPanel1.Controls.Add(this.metroSetLabel6);
             this.metroSetPanel1.IsDerivedStyle = true;
             this.metroSetPanel1.Location = new System.Drawing.Point(621, 42);
@@ -411,11 +438,52 @@
             this.metroSetPanel1.ThemeAuthor = "Narwin";
             this.metroSetPanel1.ThemeName = "MetroLite";
             // 
+            // metroSetLabel8
+            // 
+            this.metroSetLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.metroSetLabel8.IsDerivedStyle = true;
+            this.metroSetLabel8.Location = new System.Drawing.Point(16, 16);
+            this.metroSetLabel8.Name = "metroSetLabel8";
+            this.metroSetLabel8.Size = new System.Drawing.Size(207, 23);
+            this.metroSetLabel8.Style = MetroSet_UI.Enums.Style.Light;
+            this.metroSetLabel8.StyleManager = null;
+            this.metroSetLabel8.TabIndex = 20;
+            this.metroSetLabel8.Text = "Sell searched medicine";
+            this.metroSetLabel8.ThemeAuthor = "Narwin";
+            this.metroSetLabel8.ThemeName = "MetroLite";
+            // 
+            // sellBtn
+            // 
+            this.sellBtn.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.sellBtn.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.sellBtn.DisabledForeColor = System.Drawing.Color.Gray;
+            this.sellBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.sellBtn.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.sellBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.sellBtn.HoverTextColor = System.Drawing.Color.White;
+            this.sellBtn.IsDerivedStyle = true;
+            this.sellBtn.Location = new System.Drawing.Point(122, 70);
+            this.sellBtn.Name = "sellBtn";
+            this.sellBtn.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.sellBtn.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.sellBtn.NormalTextColor = System.Drawing.Color.White;
+            this.sellBtn.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.sellBtn.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.sellBtn.PressTextColor = System.Drawing.Color.White;
+            this.sellBtn.Size = new System.Drawing.Size(101, 35);
+            this.sellBtn.Style = MetroSet_UI.Enums.Style.Light;
+            this.sellBtn.StyleManager = null;
+            this.sellBtn.TabIndex = 16;
+            this.sellBtn.Text = "Sell item";
+            this.sellBtn.ThemeAuthor = "Narwin";
+            this.sellBtn.ThemeName = "MetroLite";
+            this.sellBtn.Click += new System.EventHandler(this.sellBtn_Click);
+            // 
             // metroSetLabel7
             // 
             this.metroSetLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel7.IsDerivedStyle = true;
-            this.metroSetLabel7.Location = new System.Drawing.Point(74, 82);
+            this.metroSetLabel7.Location = new System.Drawing.Point(74, 72);
             this.metroSetLabel7.Name = "metroSetLabel7";
             this.metroSetLabel7.Size = new System.Drawing.Size(42, 23);
             this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Light;
@@ -425,41 +493,40 @@
             this.metroSetLabel7.ThemeAuthor = "Narwin";
             this.metroSetLabel7.ThemeName = "MetroLite";
             // 
-            // metroSetTextBox1
+            // sellBox
             // 
-            this.metroSetTextBox1.AutoCompleteCustomSource = null;
-            this.metroSetTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.metroSetTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.metroSetTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.metroSetTextBox1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.metroSetTextBox1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.metroSetTextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.metroSetTextBox1.Enabled = false;
-            this.metroSetTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetTextBox1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.metroSetTextBox1.Image = null;
-            this.metroSetTextBox1.IsDerivedStyle = true;
-            this.metroSetTextBox1.Lines = null;
-            this.metroSetTextBox1.Location = new System.Drawing.Point(16, 70);
-            this.metroSetTextBox1.MaxLength = 32767;
-            this.metroSetTextBox1.Multiline = false;
-            this.metroSetTextBox1.Name = "metroSetTextBox1";
-            this.metroSetTextBox1.ReadOnly = false;
-            this.metroSetTextBox1.Size = new System.Drawing.Size(52, 31);
-            this.metroSetTextBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetTextBox1.StyleManager = null;
-            this.metroSetTextBox1.TabIndex = 18;
-            this.metroSetTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.metroSetTextBox1.ThemeAuthor = "Narwin";
-            this.metroSetTextBox1.ThemeName = "MetroLite";
-            this.metroSetTextBox1.UseSystemPasswordChar = false;
-            this.metroSetTextBox1.WatermarkText = "";
+            this.sellBox.AutoCompleteCustomSource = null;
+            this.sellBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.sellBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.sellBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.sellBox.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.sellBox.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.sellBox.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.sellBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.sellBox.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.sellBox.Image = null;
+            this.sellBox.IsDerivedStyle = true;
+            this.sellBox.Lines = null;
+            this.sellBox.Location = new System.Drawing.Point(16, 70);
+            this.sellBox.MaxLength = 32767;
+            this.sellBox.Multiline = false;
+            this.sellBox.Name = "sellBox";
+            this.sellBox.ReadOnly = false;
+            this.sellBox.Size = new System.Drawing.Size(52, 25);
+            this.sellBox.Style = MetroSet_UI.Enums.Style.Light;
+            this.sellBox.StyleManager = null;
+            this.sellBox.TabIndex = 18;
+            this.sellBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.sellBox.ThemeAuthor = "Narwin";
+            this.sellBox.ThemeName = "MetroLite";
+            this.sellBox.UseSystemPasswordChar = false;
+            this.sellBox.WatermarkText = "";
             // 
             // metroSetLabel6
             // 
             this.metroSetLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel6.IsDerivedStyle = true;
-            this.metroSetLabel6.Location = new System.Drawing.Point(16, 44);
+            this.metroSetLabel6.Location = new System.Drawing.Point(16, 49);
             this.metroSetLabel6.Name = "metroSetLabel6";
             this.metroSetLabel6.Size = new System.Drawing.Size(72, 23);
             this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Light;
@@ -681,82 +748,14 @@
             // 
             this.Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Error.IsDerivedStyle = true;
-            this.Error.Location = new System.Drawing.Point(279, 43);
+            this.Error.Location = new System.Drawing.Point(202, 39);
             this.Error.Name = "Error";
-            this.Error.Size = new System.Drawing.Size(445, 35);
+            this.Error.Size = new System.Drawing.Size(554, 51);
             this.Error.Style = MetroSet_UI.Enums.Style.Light;
             this.Error.StyleManager = null;
             this.Error.TabIndex = 2;
             this.Error.ThemeAuthor = "Narwin";
             this.Error.ThemeName = "MetroLite";
-            // 
-            // metroSetLabel8
-            // 
-            this.metroSetLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.metroSetLabel8.IsDerivedStyle = true;
-            this.metroSetLabel8.Location = new System.Drawing.Point(16, 11);
-            this.metroSetLabel8.Name = "metroSetLabel8";
-            this.metroSetLabel8.Size = new System.Drawing.Size(207, 23);
-            this.metroSetLabel8.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel8.StyleManager = null;
-            this.metroSetLabel8.TabIndex = 20;
-            this.metroSetLabel8.Text = "Sell searched drug";
-            this.metroSetLabel8.ThemeAuthor = "Narwin";
-            this.metroSetLabel8.ThemeName = "MetroLite";
-            // 
-            // EditBtnSerach
-            // 
-            this.EditBtnSerach.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.EditBtnSerach.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.EditBtnSerach.DisabledForeColor = System.Drawing.Color.Gray;
-            this.EditBtnSerach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.EditBtnSerach.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.EditBtnSerach.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.EditBtnSerach.HoverTextColor = System.Drawing.Color.White;
-            this.EditBtnSerach.IsDerivedStyle = true;
-            this.EditBtnSerach.Location = new System.Drawing.Point(133, 356);
-            this.EditBtnSerach.Name = "EditBtnSerach";
-            this.EditBtnSerach.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.EditBtnSerach.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.EditBtnSerach.NormalTextColor = System.Drawing.Color.White;
-            this.EditBtnSerach.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.EditBtnSerach.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.EditBtnSerach.PressTextColor = System.Drawing.Color.White;
-            this.EditBtnSerach.Size = new System.Drawing.Size(113, 35);
-            this.EditBtnSerach.Style = MetroSet_UI.Enums.Style.Light;
-            this.EditBtnSerach.StyleManager = null;
-            this.EditBtnSerach.TabIndex = 21;
-            this.EditBtnSerach.Text = "Edit";
-            this.EditBtnSerach.ThemeAuthor = "Narwin";
-            this.EditBtnSerach.ThemeName = "MetroLite";
-            this.EditBtnSerach.Click += new System.EventHandler(this.EditBtnSerach_Click);
-            // 
-            // DeleteBtnSerach
-            // 
-            this.DeleteBtnSerach.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.DeleteBtnSerach.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.DeleteBtnSerach.DisabledForeColor = System.Drawing.Color.Gray;
-            this.DeleteBtnSerach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DeleteBtnSerach.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.DeleteBtnSerach.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.DeleteBtnSerach.HoverTextColor = System.Drawing.Color.White;
-            this.DeleteBtnSerach.IsDerivedStyle = true;
-            this.DeleteBtnSerach.Location = new System.Drawing.Point(268, 356);
-            this.DeleteBtnSerach.Name = "DeleteBtnSerach";
-            this.DeleteBtnSerach.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.DeleteBtnSerach.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.DeleteBtnSerach.NormalTextColor = System.Drawing.Color.White;
-            this.DeleteBtnSerach.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.DeleteBtnSerach.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.DeleteBtnSerach.PressTextColor = System.Drawing.Color.White;
-            this.DeleteBtnSerach.Size = new System.Drawing.Size(113, 35);
-            this.DeleteBtnSerach.Style = MetroSet_UI.Enums.Style.Light;
-            this.DeleteBtnSerach.StyleManager = null;
-            this.DeleteBtnSerach.TabIndex = 22;
-            this.DeleteBtnSerach.Text = "Delete";
-            this.DeleteBtnSerach.ThemeAuthor = "Narwin";
-            this.DeleteBtnSerach.ThemeName = "MetroLite";
-            this.DeleteBtnSerach.Click += new System.EventHandler(this.DeleteBtnSerach_Click);
             // 
             // DrugDatabaseForm
             // 
@@ -812,8 +811,8 @@
         private System.Windows.Forms.ColumnHeader ColPrice;
         private System.Windows.Forms.ColumnHeader ColDesc;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel7;
-        private MetroSet_UI.Controls.MetroSetTextBox metroSetTextBox1;
-        private MetroSet_UI.Controls.MetroSetButton metroSetButton4;
+        private MetroSet_UI.Controls.MetroSetTextBox sellBox;
+        private MetroSet_UI.Controls.MetroSetButton sellBtn;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel6;
         private MetroSet_UI.Controls.MetroSetPanel metroSetPanel1;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel8;

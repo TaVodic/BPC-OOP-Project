@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,24 +36,43 @@ namespace DrugDatabaseMetro
             //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
             //AutoCompleteInit();
 
-            string FileName = "C:\\Users\\Martin\\source\\repos\\TaVodic\\BPC-OOP-Project\\CSV\\6paraleny.csv";
-            if (!database.ImportFromCSV(FileName))
+            string FileName = "C:\\Users\\Martin\\source\\repos\\TaVodic\\BPC-OOP-Project\\CSV\\default.csv";
+            try
             {
-                Error.Text = "Initial import failed! No databse is present, please import one.";
+                database.ImportFromCSV(FileName);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Error.Text = "Initial import failed! Please import database manualy.";
                 Error.ForeColor = Color.Red;
+                return;
             }
-            else
+            /*catch (Exception ex)
             {
-                Error.Text = "Initial import has been successful";
-                Error.ForeColor = Color.Green;
-            }
+                Error.Text = "Initial import failed! " + ex.Message;
+                Error.ForeColor = Color.Red;
+                return;
+            }*/
+            Error.Text = "Initial import has been successful";
+            Error.ForeColor = Color.Green;
 
             ListDrugs();            
         }
 
         private void SearchBtn_Click(object sender, EventArgs e) // display search results
         {
-            Drug drug = database.GetDrugByName(DrgSearch.Text);
+            Drug drug;
+            try
+            {
+                 drug = database.GetDrugByName(DrgSearch.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Cannot find selectes drug!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DrgSearch.Text = string.Empty;
+                return;
+            }
+
             searchedDrug = drug;
             if (drug != null)
             {
@@ -82,13 +103,13 @@ namespace DrugDatabaseMetro
             {
                 index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Select item for editing!", "Error");
+                MessageBox.Show("Select item for editing!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
-            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, searchedDrug);
+            EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, database.GetDrugByIndex(index).Name);
             form2.ShowDialog();
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -98,9 +119,9 @@ namespace DrugDatabaseMetro
             {
                 index = DrugList.Items.IndexOf(DrugList.SelectedItems[0]);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Select item to delete!", "Error");
+                MessageBox.Show("Select item to delete!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
@@ -111,6 +132,14 @@ namespace DrugDatabaseMetro
 
         private void EditBtnSerach_Click(object sender, EventArgs e)
         {
+            if (searchedDrug != null)
+            {
+                EditingForm form2 = new EditingForm(EditingForm.Mode.Edit, searchedDrug.Name);
+                form2.ShowDialog();
+            }
+            else            
+                MessageBox.Show("Search item to edit!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
 
         }
 
@@ -129,10 +158,31 @@ namespace DrugDatabaseMetro
                 DrgPrice.Text = string.Empty;
                 DrgInStock.Text = string.Empty;
             }
-            else
+            else       
+                MessageBox.Show("Search item to delete!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+
+        private void sellBtn_Click(object sender, EventArgs e)
+        {
+            if (searchedDrug != null)
             {
-                MessageBox.Show("Search item to delete!", "Error");
+                try
+                {
+                    if (Convert.ToInt16(sellBox.Text) < 0)
+                        throw new FormatException();
+                    database.SellDrug(searchedDrug, Convert.ToInt16(sellBox.Text));
+                }
+                catch
+                {
+                    MessageBox.Show("Input in incorect format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                SearchBtn_Click(sender, e);
             }
+            else            
+                MessageBox.Show("First search the item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+
         }
 
         // CSV import and export
@@ -157,16 +207,18 @@ namespace DrugDatabaseMetro
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (!database.ImportFromCSV(fileDialog.FileName))
+                try
                 {
-                    Error.Text = "Not compatible or corrupted file! Import Failed.";
+                    database.ImportFromCSV(fileDialog.FileName);
+                }
+                catch (Exception es)
+                {
+                    Error.Text = "Import failed!" + es.Message;
                     Error.ForeColor = Color.Red;
+                    return;
                 }
-                else
-                {
-                    Error.Text = "Import has been successful";
-                    Error.ForeColor = Color.Green;
-                }
+                Error.Text = "Import has been successful";
+                Error.ForeColor = Color.Green;
             }
             AutoCompleteInit();
             ListDrugs();
@@ -217,8 +269,11 @@ namespace DrugDatabaseMetro
         {
             AutoCompleteInit();
             ListDrugs();
+            if (searchedDrug != null)
+            {
+                SearchBtn_Click(sender, e);
+            }
         }
-
         private void DrugList_DoubleClick(object sender, EventArgs e)
         {
             EditBtn_Click(sender, e);
