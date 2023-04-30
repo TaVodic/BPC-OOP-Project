@@ -31,12 +31,9 @@ namespace DrugDatabaseMetro
         private void DrugDatabase_Load(object sender, EventArgs e)
         {
             instance = this;
-            //database.AddNewDrug(new Drug("Paralen Rapid 100mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.", "Zentiva", 5, 2.50, "xccv"));
-            //database.AddNewDrug(new Drug("Paralen Rapid 500mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 5, 2.50, "image"));
-            //database.AddNewDrug(new Drug("Paralen Rapid 300mg", "Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.", "Zentiva", 0, 2.50, "image"));
-            //AutoCompleteInit();
+            AutoCompleteInit();
 
-            string FileName = "C:\\Users\\Martin\\source\\repos\\TaVodic\\BPC-OOP-Project\\CSV\\default.csv";
+          /*  string FileName = "C:\\Users\\Martin\\source\\repos\\TaVodic\\BPC-OOP-Project\\CSV\\default.csv";
             try
             {
                 database.ImportFromCSV(FileName);
@@ -46,7 +43,7 @@ namespace DrugDatabaseMetro
                 Error.Text = "Initial import failed! Please import database manualy.";
                 Error.ForeColor = Color.Red;
                 return;
-            }
+            }*/
             /*catch (Exception ex)
             {
                 Error.Text = "Initial import failed! " + ex.Message;
