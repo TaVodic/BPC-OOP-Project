@@ -49,9 +49,9 @@ namespace DrugDatabaseMetro
                 Error.Text = "Initial import failed! " + ex.Message;
                 Error.ForeColor = Color.Red;
                 return;
-            }*/
+            }
             Error.Text = "Initial import has been successful";
-            Error.ForeColor = Color.Green;
+            Error.ForeColor = Color.Green;*/
 
             ListDrugs();            
         }

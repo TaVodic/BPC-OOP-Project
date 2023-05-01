@@ -1,8 +1,14 @@
 ﻿ID,Name,Description,Producer,InStock,Price,PhotoPath
-0,Paralen Rapid 100mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.",Zentiva,85,4,6,5
+0,Paralen Rapid 100mg,"Šumivé tablety Paralen Rapid 100 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních. Také pomáhají při bolesti hlavy, zubů, zad, bolestivé menstruaci, při bolesti svalů a kloubů provázející chřipku a nachlazení. Paralen Rapid 500 mg mohou užívat dospělí a dospívající od 12 let.",Zentiva,85,4,6
 0,Paralen Rapid 500mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,5,2,5
-0,Paralen Rapid 300mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,9,3,49,5
-0,Paralen Rapid 10mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,8,5,2,5
-0,Paralen Rapid 15mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,53,9,99,5
-0,Paralen Rapid 30mg,"Šumivé tablety Paralen Rapid 500 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,123,5,63,5
-0,Ibalgin,"Najlepší liek na svete.",Pharma,6,12,99,
+0,Paralen Rapid 300mg,"Šumivé tablety Paralen Rapid 300 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,9,3,49
+0,Paralen Rapid 10mg,"Šumivé tablety Paralen Rapid 10 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,8,5,2
+0,Paralen Rapid 15mg,"Šumivé tablety Paralen Rapid 15 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,53,9,99
+0,Paralen Rapid 30mg,"Šumivé tablety Paralen Rapid 30 mg snižují horečku při chřipce, nachlazení a jiných infekčních onemocněních.",Zentiva,123,5,63
+0,Ibalgin,"Najlepší liek na svete.",Pharma,6,12,99
+0,Kolagén Artro,"Prípravok obsahuje kolagén typu I, ktorý je prítomný v šľachách, kostiach a pokožke, kolagén typu II a vitamín C.",Plus,23,6,54,
+0,Condrosulf 400,"K léčbě degenerativních onemocnění kloubů, zejména osteoartrózy kolenního nebo kyčelního kloubu mírného až středního stupně a osteoartrózy kloubů prstů ruky.",CONDROSULF,475,23,35,
+0,Zodac 10 mg,"Zodac 10 mg tablety se užívají ke zmírnění nosních a očních příznaků alergické rýmy a příznaků kopřivky u dospělých, dospívajících a dětí od 6 let.",Zentiva,326,22,9,
+0,Xyzal 5 mg,"Xyzal 5 mg se používá k léčbě příznaků spojených s alergickou rýmou a kopřivkou u dospělých a dětí od 6 let.",UCB,234,16,53,
+0,Voltaren Forte 20 mg/g gel 100 g,"Voltaren Forte 20 mg/g gel ulevuje od bolesti, potlačuje zánět a zmírňuje otoky u bolestivých stavů postihujících svaly a klouby u dospělých a dospívajících od 14 let.",Forte,68,32,35,
+0,Dr.Max Simethicon 80 mg,"Zdravotnický prostředek Dr.Max Simethicon 80 mg pomáhá proti nadýmání, pocitu plnosti a plynatosti. Simethicon snižuje povrchové napětí plynových bublin ve střevech.",Dr. Max,231,1,23,
